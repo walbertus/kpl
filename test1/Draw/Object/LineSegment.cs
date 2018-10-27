@@ -40,7 +40,7 @@ namespace test1.Draw.Object
 					point.Y >= startPoint.Y && point.Y <= endPoint.Y);
 		}
 
-		public void Translate(int x, int y)
+		public void Translate(double x, double y)
 		{
 			startPoint.X += x;
 			endPoint.X += x;

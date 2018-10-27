@@ -31,8 +31,8 @@ namespace test1.Draw.Tool
 		public override void OnButtonReleaseEvent(EventButton eventArgs)
 		{
 			if (activeObject != null) {
-				int x = (int)(eventArgs.X - startPoint.X);
-				int y = (int)(eventArgs.Y - startPoint.Y);
+				double x = eventArgs.X - startPoint.X;
+				double y = eventArgs.Y - startPoint.Y;
 				activeObject.Translate(x, y);
 				activeObject.ChangeColor(0, 0, 0);
 				Canvas.Update();
