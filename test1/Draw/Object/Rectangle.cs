@@ -15,12 +15,16 @@ namespace test1.Draw.Object
 		{
 			points = new List<Common.PointD>();
 			color = new Cairo.Color(0, 0, 0);
-			this.startPoint = startPoint;
-			this.endPoint = endPoint;
+			double minX = System.Math.Min(startPoint.X, endPoint.X);
+			double maxX = System.Math.Max(startPoint.X, endPoint.X);
+			double minY = System.Math.Min(startPoint.Y, endPoint.Y);
+			double maxY = System.Math.Max(startPoint.Y, endPoint.Y);
+			this.startPoint = new PointD(minX, minY);
+			this.endPoint = new PointD(maxX, maxY);
 			points.Add(new Common.PointD(startPoint.X, startPoint.Y));
-			points.Add(new Common.PointD(endPoint.X, startPoint.Y));
-			points.Add(new Common.PointD(endPoint.X, endPoint.Y));
-			points.Add(new Common.PointD(startPoint.X, endPoint.Y));
+            points.Add(new Common.PointD(endPoint.X, startPoint.Y));
+            points.Add(new Common.PointD(endPoint.X, endPoint.Y));
+            points.Add(new Common.PointD(startPoint.X, endPoint.Y));
 		}
        
 		public void ChangeColor(int r, int g, int b)
