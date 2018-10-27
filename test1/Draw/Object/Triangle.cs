@@ -1,18 +1,29 @@
 ﻿using Gdk;
+using System.Collections.Generic;
+using test1.Common;
 
 namespace test1.Draw.Object
 {
 	public class Triangle : IObject
 	{
-		Common.PointD endPoint;
-		Common.PointD startPoint;
+		PointD endPoint;
+		PointD startPoint;
 		Cairo.Color color;
+		List<PointD> points;
       
-		public Triangle(Common.PointD startPoint, Common.PointD endPoint)
+		public Triangle(PointD startPoint, PointD endPoint)
 		{
+			points = new List<PointD>();
+			points.Add(new PointD((startPoint.X + endPoint.X) / 2, startPoint.Y));
+			points.Add(new PointD(endPoint.X, endPoint.Y));
+			points.Add(new PointD(startPoint.X, endPoint.Y));
 			color = new Cairo.Color(0, 0, 0);
-			this.startPoint = startPoint;
-			this.endPoint = endPoint;
+            double minX = System.Math.Min(startPoint.X, endPoint.X);
+            double maxX = System.Math.Max(startPoint.X, endPoint.X);
+            double minY = System.Math.Min(startPoint.Y, endPoint.Y);
+            double maxY = System.Math.Max(startPoint.Y, endPoint.Y);
+            this.startPoint = new PointD(minX, minY);
+            this.endPoint = new PointD(maxX, maxY);
 		}
 
 		public void ChangeColor(int r, int g, int b)
@@ -28,16 +39,18 @@ namespace test1.Draw.Object
 		public void Draw(Window window)
 		{
 			Cairo.Context g = CairoHelper.Create(window);
-			g.LineWidth = 5;
-			g.MoveTo((startPoint.X + endPoint.X) / 2, startPoint.Y);
-			g.LineTo(endPoint.X, endPoint.Y);
-			g.LineTo(startPoint.X, endPoint.Y);
-			g.ClosePath();
-			g.SetSourceColor(color);
-			g.Stroke();
+            g.LineWidth = 5;
+            g.MoveTo(points[0].X, points[0].Y);
+            foreach (PointD point in points)
+            {
+                g.LineTo(point.X, point.Y);
+            }
+            g.SetSourceColor(color);
+            g.ClosePath();
+            g.Stroke();
 		}
 
-		public bool IsContain(Common.PointD point)
+		public bool IsContain(PointD point)
 		{
 			return (point.X >= startPoint.X && point.X <= endPoint.X &&
                     point.Y >= startPoint.Y && point.Y <= endPoint.Y);
@@ -45,6 +58,11 @@ namespace test1.Draw.Object
 
 		public void Translate(double x, double y)
         {
+			foreach (PointD point in points)
+            {
+                point.X += x;
+                point.Y += y;
+            }
             startPoint.X += x;
             endPoint.X += x;
             startPoint.Y += y;

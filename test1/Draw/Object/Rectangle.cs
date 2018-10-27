@@ -6,14 +6,14 @@ namespace test1.Draw.Object
 {
 	public class Rectangle : IObject
 	{
-		Common.PointD startPoint;
-		Common.PointD endPoint;
+		PointD startPoint;
+		PointD endPoint;
 		Cairo.Color color;
-		List<Common.PointD> points;
+		List<PointD> points;
 
-		public Rectangle(Common.PointD startPoint, Common.PointD endPoint)
+		public Rectangle(PointD startPoint, PointD endPoint)
 		{
-			points = new List<Common.PointD>();
+			points = new List<PointD>();
 			color = new Cairo.Color(0, 0, 0);
 			double minX = System.Math.Min(startPoint.X, endPoint.X);
 			double maxX = System.Math.Max(startPoint.X, endPoint.X);
@@ -21,10 +21,10 @@ namespace test1.Draw.Object
 			double maxY = System.Math.Max(startPoint.Y, endPoint.Y);
 			this.startPoint = new PointD(minX, minY);
 			this.endPoint = new PointD(maxX, maxY);
-			points.Add(new Common.PointD(startPoint.X, startPoint.Y));
-            points.Add(new Common.PointD(endPoint.X, startPoint.Y));
-            points.Add(new Common.PointD(endPoint.X, endPoint.Y));
-            points.Add(new Common.PointD(startPoint.X, endPoint.Y));
+			points.Add(new PointD(startPoint.X, startPoint.Y));
+            points.Add(new PointD(endPoint.X, startPoint.Y));
+            points.Add(new PointD(endPoint.X, endPoint.Y));
+            points.Add(new PointD(startPoint.X, endPoint.Y));
 		}
        
 		public void ChangeColor(int r, int g, int b)
@@ -42,7 +42,7 @@ namespace test1.Draw.Object
 			Cairo.Context g = CairoHelper.Create(window);
 			g.LineWidth = 5;
 			g.MoveTo(points[0].X, points[0].Y);
-			foreach(Common.PointD point in points) {
+			foreach(PointD point in points) {
 				g.LineTo(point.X, point.Y);
 			}
 			g.SetSourceColor(color);
@@ -50,7 +50,7 @@ namespace test1.Draw.Object
 			g.Stroke();
 		}
 
-		public bool IsContain(Common.PointD point)
+		public bool IsContain(PointD point)
 		{
 			return (point.X >= startPoint.X && point.X <= endPoint.X &&
                     point.Y >= startPoint.Y && point.Y <= endPoint.Y);
@@ -58,7 +58,7 @@ namespace test1.Draw.Object
 
 		public void Translate(double x, double y)
         {
-			foreach (Common.PointD point in points) {
+			foreach (PointD point in points) {
 				point.X += x;
 				point.Y += y;
 			}
