@@ -3,11 +3,11 @@ namespace test1.Draw.Object
 {
 	public class LineSegment: IObject
     {
-		Point startPoint;
-		Point endPoint;
+		Common.PointD startPoint;
+		Common.PointD endPoint;
 		Cairo.Color color;
 		
-		public LineSegment(Point startPoint, Point endPoint)
+		public LineSegment(Common.PointD startPoint, Common.PointD endPoint)
         {
 			color = new Cairo.Color(0, 0, 0);
 			this.startPoint = startPoint;
@@ -34,7 +34,7 @@ namespace test1.Draw.Object
             g.Stroke();
 		}
 
-		public bool IsContain(Point point)
+		public bool IsContain(test1.Common.PointD point)
 		{
 			return (point.X >= startPoint.X && point.X <= endPoint.X &&
 					point.Y >= startPoint.Y && point.Y <= endPoint.Y);

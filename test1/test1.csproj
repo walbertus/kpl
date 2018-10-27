@@ -77,12 +77,14 @@
     <Compile Include="Draw\Tool\TriangleTool.cs" />
     <Compile Include="Draw\Tool\LineSegmentTool.cs" />
     <Compile Include="Draw\Tool\MoveTool.cs" />
+    <Compile Include="Common\PointD.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Draw\" />
     <Folder Include="Draw\Tool\" />
     <Folder Include="Draw\Canvas\" />
     <Folder Include="Draw\Object\" />
+    <Folder Include="Common\" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
 </Project>

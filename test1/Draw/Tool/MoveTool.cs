@@ -1,12 +1,11 @@
-﻿using System;
-using Gdk;
+﻿using Gdk;
 
 namespace test1.Draw.Tool
 {
 	public class MoveTool: ToolBase
     {
 		Object.IObject activeObject;
-		Point startPoint;
+		Common.PointD startPoint;
 		
 		public MoveTool(string name, string label, Canvas.DefaultCanvas canvas)
             : base(name, label, canvas)
@@ -16,7 +15,7 @@ namespace test1.Draw.Tool
 
 		public override void OnButtonPressEvent(EventButton eventArgs)
 		{
-			startPoint = new Point((int)eventArgs.X, (int)eventArgs.Y);
+			startPoint = new Common.PointD(eventArgs.X, eventArgs.Y);
 			foreach(Object.IObject drawObject in Canvas.DrawObjects) {
 				if (drawObject.IsContain(startPoint)) {
 					activeObject = drawObject;
