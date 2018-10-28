@@ -55,6 +55,20 @@ namespace test1.Draw.Object
 					point.Y >= startPoint.Y && point.Y <= endPoint.Y);
 		}
 
+		public void Scale(PointD newPoint, int position)
+        {
+            if (position == ObjectConstants.OBJECT_CONTROL_BOTTOM_RIGHT)
+            {
+                double xScale = (newPoint.X - startPoint.X) / (endPoint.X - startPoint.X);
+                double yScale = (newPoint.Y - startPoint.Y) / (endPoint.Y - startPoint.Y);
+                foreach (PointD point in points)
+                {
+                    point.X = startPoint.X + (xScale * (point.X - startPoint.X));
+                    point.Y = startPoint.Y + (yScale * (point.Y - startPoint.Y));
+                }
+            }
+        }
+
 		public void Translate(double x, double y)
 		{
 			foreach (PointD point in points)

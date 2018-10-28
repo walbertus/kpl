@@ -7,5 +7,6 @@
 		bool IsContain(Common.PointD point);
 		void ChangeColor(int r, int g, int b);
 		void ChangeColor(Cairo.Color color);
+		void Scale(Common.PointD point, int position);
 	}
 }

@@ -78,6 +78,7 @@
     <Compile Include="Draw\Tool\LineSegmentTool.cs" />
     <Compile Include="Draw\Tool\MoveTool.cs" />
     <Compile Include="Common\PointD.cs" />
+    <Compile Include="Draw\Object\ObjectConstants.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Draw\" />
