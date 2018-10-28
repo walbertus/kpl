@@ -11,6 +11,11 @@ namespace test1.Draw.Tool
         {
         }
 
+		public override void OnButtonMotionEvent(EventMotion eventArgs)
+		{
+			
+		}
+
 		public override void OnButtonPressEvent(EventButton eventArgs)
 		{
 			startPoint = new Common.PointD(eventArgs.X, eventArgs.Y);

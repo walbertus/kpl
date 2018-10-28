@@ -53,6 +53,13 @@ namespace test1.Draw.Tool
 			Console.Out.WriteLine("Tool change to " + name);
 		}
 
+		public void OnButtonMotionEvent(Gdk.EventMotion eventArgs)
+        {
+			if (ActiveTool != null) {
+				ActiveTool.OnButtonMotionEvent(eventArgs);
+			}
+        }
+
 		public void OnButtonPressEvent(Gdk.EventButton eventArgs)
         {
 			if (ActiveTool != null) {

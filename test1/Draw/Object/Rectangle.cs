@@ -59,13 +59,22 @@ namespace test1.Draw.Object
 		public void Scale(PointD newPoint, int position)
 		{
 			if (position == ObjectConstants.OBJECT_CONTROL_BOTTOM_RIGHT) {
-				double xScale = (newPoint.X - startPoint.X) / (endPoint.X - startPoint.X);
-				double yScale = (newPoint.Y - startPoint.Y) / (endPoint.Y - startPoint.Y);
+				double xScale = (newPoint.X - startPoint.X + double.Epsilon) / (endPoint.X - startPoint.X + double.Epsilon);
+				double yScale = (newPoint.Y - startPoint.Y + double.Epsilon) / (endPoint.Y - startPoint.Y + double.Epsilon);
+				if (System.Math.Abs(xScale) > 1000) {
+					xScale = 1;
+				}
+				if (System.Math.Abs(yScale) > 1000)
+                {
+                    yScale = 1;
+                }
 				foreach(PointD point in points) {
-					point.X = startPoint.X + (xScale * (point.X - startPoint.X));
-					point.Y = startPoint.Y + (yScale * (point.Y - startPoint.Y));
+					point.X = startPoint.X + (xScale * (point.X - startPoint.X + double.Epsilon));
+					point.Y = startPoint.Y + (yScale * (point.Y - startPoint.Y + double.Epsilon));
+
 				}
 			}
+			endPoint = newPoint;
 		}
 
 		public void Translate(double x, double y)

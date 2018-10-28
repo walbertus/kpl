@@ -48,4 +48,9 @@ public partial class MainWindow : Window
 	{
 		toolbar.OnButtonReleaseEvent(args.Event);
 	}
+
+	protected void OnDrawingareaMotionNotifyEvent(object o, MotionNotifyEventArgs args)
+	{
+		toolbar.OnButtonMotionEvent(args.Event);
+	}
 }

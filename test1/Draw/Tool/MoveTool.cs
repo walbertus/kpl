@@ -13,6 +13,11 @@ namespace test1.Draw.Tool
 			activeObject = null;
         }
 
+		public override void OnButtonMotionEvent(EventMotion eventArgs)
+		{
+			throw new System.NotImplementedException();
+		}
+
 		public override void OnButtonPressEvent(EventButton eventArgs)
 		{
 			startPoint = new Common.PointD(eventArgs.X, eventArgs.Y);

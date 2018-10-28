@@ -30,7 +30,7 @@ public partial class MainWindow
 		w1.Expand = false;
 		// Container child vbox2.Gtk.Box+BoxChild
 		this.drawingarea = new global::Gtk.DrawingArea();
-		this.drawingarea.Events = ((global::Gdk.EventMask)(768));
+		this.drawingarea.Events = ((global::Gdk.EventMask)(772));
 		this.drawingarea.Name = "drawingarea";
 		this.vbox2.Add(this.drawingarea);
 		global::Gtk.Box.BoxChild w2 = ((global::Gtk.Box.BoxChild)(this.vbox2[this.drawingarea]));
@@ -46,5 +46,6 @@ public partial class MainWindow
 		this.DeleteEvent += new global::Gtk.DeleteEventHandler(this.OnDeleteEvent);
 		this.drawingarea.ButtonPressEvent += new global::Gtk.ButtonPressEventHandler(this.OnDrawingareaButtonPressEvent);
 		this.drawingarea.ButtonReleaseEvent += new global::Gtk.ButtonReleaseEventHandler(this.OnDrawingareaButtonReleaseEvent);
+		this.drawingarea.MotionNotifyEvent += new global::Gtk.MotionNotifyEventHandler(this.OnDrawingareaMotionNotifyEvent);
 	}
 }

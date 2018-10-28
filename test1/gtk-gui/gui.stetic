@@ -41,6 +41,7 @@
             <property name="Events">ButtonPressMask, ButtonReleaseMask</property>
             <signal name="ButtonPressEvent" handler="OnDrawingareaButtonPressEvent" />
             <signal name="ButtonReleaseEvent" handler="OnDrawingareaButtonReleaseEvent" />
+            <signal name="MotionNotifyEvent" handler="OnDrawingareaMotionNotifyEvent" />
           </widget>
           <packing>
             <property name="Position">1</property>
