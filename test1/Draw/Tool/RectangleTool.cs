@@ -32,6 +32,7 @@ namespace test1.Draw.Tool
 
         public override void OnButtonReleaseEvent(EventButton eventArgs)
         {
+			activeObject.ReconfigureCornerPoints();
 			activeObject = null;
         }
     }

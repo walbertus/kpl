@@ -15,16 +15,10 @@ namespace test1.Draw.Object
 		{
 			points = new List<PointD>();
 			color = new Cairo.Color(0, 0, 0);
-			double minX = System.Math.Min(startPoint.X, endPoint.X);
-			double maxX = System.Math.Max(startPoint.X, endPoint.X);
-			double minY = System.Math.Min(startPoint.Y, endPoint.Y);
-			double maxY = System.Math.Max(startPoint.Y, endPoint.Y);
-			this.startPoint = new PointD(minX, minY);
-			this.endPoint = new PointD(maxX, maxY);
-			points.Add(new PointD(startPoint.X, startPoint.Y));
-            points.Add(new PointD(endPoint.X, startPoint.Y));
-            points.Add(new PointD(endPoint.X, endPoint.Y));
-            points.Add(new PointD(startPoint.X, endPoint.Y));
+			RecreatePoints(startPoint, endPoint);
+			this.startPoint = startPoint;
+			this.endPoint = endPoint;
+			ReconfigureCornerPoints();
 		}
        
 		public void ChangeColor(int r, int g, int b)
@@ -56,25 +50,31 @@ namespace test1.Draw.Object
                     point.Y >= startPoint.Y && point.Y <= endPoint.Y);
 		}
 
+		void RecreatePoints(PointD startPoint, PointD endPoint)
+		{
+			points.Clear();
+			points.Add(new PointD(startPoint.X, startPoint.Y));
+            points.Add(new PointD(endPoint.X, startPoint.Y));
+            points.Add(new PointD(endPoint.X, endPoint.Y));
+            points.Add(new PointD(startPoint.X, endPoint.Y));
+		}
+
+		public void ReconfigureCornerPoints()
+		{
+			double minX = System.Math.Min(startPoint.X, endPoint.X);
+            double maxX = System.Math.Max(startPoint.X, endPoint.X);
+            double minY = System.Math.Min(startPoint.Y, endPoint.Y);
+            double maxY = System.Math.Max(startPoint.Y, endPoint.Y);
+			this.startPoint = new PointD(minX, minY);
+            this.endPoint = new PointD(maxX, maxY);
+		}
+
 		public void Scale(PointD newPoint, int position)
 		{
 			if (position == ObjectConstants.OBJECT_CONTROL_BOTTOM_RIGHT) {
-				double xScale = (newPoint.X - startPoint.X + double.Epsilon) / (endPoint.X - startPoint.X + double.Epsilon);
-				double yScale = (newPoint.Y - startPoint.Y + double.Epsilon) / (endPoint.Y - startPoint.Y + double.Epsilon);
-				if (System.Math.Abs(xScale) > 1000) {
-					xScale = 1;
-				}
-				if (System.Math.Abs(yScale) > 1000)
-                {
-                    yScale = 1;
-                }
-				foreach(PointD point in points) {
-					point.X = startPoint.X + (xScale * (point.X - startPoint.X + double.Epsilon));
-					point.Y = startPoint.Y + (yScale * (point.Y - startPoint.Y + double.Epsilon));
-
-				}
+				RecreatePoints(startPoint, newPoint);
+				endPoint = newPoint;
 			}
-			endPoint = newPoint;
 		}
 
 		public void Translate(double x, double y)

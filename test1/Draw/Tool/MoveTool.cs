@@ -15,7 +15,7 @@ namespace test1.Draw.Tool
 
 		public override void OnButtonMotionEvent(EventMotion eventArgs)
 		{
-			throw new System.NotImplementedException();
+			
 		}
 
 		public override void OnButtonPressEvent(EventButton eventArgs)
