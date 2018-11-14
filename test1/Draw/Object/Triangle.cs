@@ -31,11 +31,6 @@ namespace test1.Draw.Object
             color = new Cairo.Color(r, g, b);
         }
 
-        public override void ChangeColor(Cairo.Color color)
-        {
-            this.color = color;
-        }
-
         public override void Draw(Window window)
 		{
 			Cairo.Context g = CairoHelper.Create(window);

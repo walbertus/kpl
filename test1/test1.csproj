@@ -79,6 +79,7 @@
     <Compile Include="Draw\Tool\MoveTool.cs" />
     <Compile Include="Common\PointD.cs" />
     <Compile Include="Draw\Object\ObjectConstants.cs" />
+    <Compile Include="Draw\Object\State\ObjectStateBase.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Draw\" />
@@ -86,6 +87,7 @@
     <Folder Include="Draw\Canvas\" />
     <Folder Include="Draw\Object\" />
     <Folder Include="Common\" />
+    <Folder Include="Draw\Object\State\" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
 </Project>
