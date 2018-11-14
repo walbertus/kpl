@@ -4,7 +4,7 @@ namespace test1.Draw.Tool
 {
 	public class MoveTool: ToolBase
     {
-		Object.IObject activeObject;
+		Object.ObjectBase activeObject;
 		Common.PointD startPoint;
 		
 		public MoveTool(string name, string label, Canvas.DefaultCanvas canvas)
@@ -21,7 +21,7 @@ namespace test1.Draw.Tool
 		public override void OnButtonPressEvent(EventButton eventArgs)
 		{
 			startPoint = new Common.PointD(eventArgs.X, eventArgs.Y);
-			foreach(Object.IObject drawObject in Canvas.DrawObjects) {
+			foreach(Object.ObjectBase drawObject in Canvas.DrawObjects) {
 				if (drawObject.IsContain(startPoint)) {
 					activeObject = drawObject;
 					break;

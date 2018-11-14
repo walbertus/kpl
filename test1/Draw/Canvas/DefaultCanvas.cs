@@ -8,12 +8,12 @@ namespace test1.Draw.Canvas
 	public class DefaultCanvas : CanvasBase
 	{
 		Gdk.Window _drawWindow;
-		readonly List<Object.IObject> _drawObjects;
+		readonly List<Object.ObjectBase> _drawObjects;
 
 		public DefaultCanvas(Gdk.Window window)
 			: base(window)
 		{
-			_drawObjects = new List<Object.IObject>();
+			_drawObjects = new List<Object.ObjectBase>();
 			_drawWindow = window;
 		}
 
@@ -23,9 +23,9 @@ namespace test1.Draw.Canvas
 			set => _drawWindow = value;
 		}
 
-		public List<IObject> DrawObjects => _drawObjects;
+		public List<ObjectBase> DrawObjects => _drawObjects;
 
-		public void AddDrawObject(Object.IObject drawObject)
+		public void AddDrawObject(Object.ObjectBase drawObject)
 		{
 			_drawObjects.Add(drawObject);
 			DrawWindow.Clear();
@@ -40,7 +40,7 @@ namespace test1.Draw.Canvas
 
 		public void Draw()
 		{
-			foreach (Object.IObject drawObject in _drawObjects)
+			foreach (Object.ObjectBase drawObject in _drawObjects)
 			{
 				drawObject.Draw(DrawWindow);
 			}

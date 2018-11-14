@@ -4,7 +4,7 @@ using test1.Common;
 
 namespace test1.Draw.Object
 {
-	public class Triangle : IObject
+	public class Triangle : ObjectBase
 	{
 		PointD endPoint;
 		PointD startPoint;
@@ -26,17 +26,17 @@ namespace test1.Draw.Object
             this.endPoint = new PointD(maxX, maxY);
 		}
 
-		public void ChangeColor(int r, int g, int b)
+		public override void ChangeColor(int r, int g, int b)
         {
             color = new Cairo.Color(r, g, b);
         }
 
-        public void ChangeColor(Cairo.Color color)
+        public override void ChangeColor(Cairo.Color color)
         {
             this.color = color;
         }
 
-		public void Draw(Window window)
+        public override void Draw(Window window)
 		{
 			Cairo.Context g = CairoHelper.Create(window);
             g.LineWidth = 5;
@@ -50,13 +50,13 @@ namespace test1.Draw.Object
             g.Stroke();
 		}
 
-		public bool IsContain(PointD point)
+        public override bool IsContain(PointD point)
 		{
 			return (point.X >= startPoint.X && point.X <= endPoint.X &&
                     point.Y >= startPoint.Y && point.Y <= endPoint.Y);
 		}
 
-		public void Scale(PointD newPoint, int position)
+        public override void Scale(PointD newPoint, int position)
         {
             if (position == ObjectConstants.OBJECT_CONTROL_BOTTOM_RIGHT)
             {
@@ -70,7 +70,7 @@ namespace test1.Draw.Object
             }
         }
 
-		public void Translate(double x, double y)
+        public override void Translate(double x, double y)
         {
 			foreach (PointD point in points)
             {
