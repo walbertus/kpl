@@ -6,12 +6,11 @@ namespace test1.Draw.Object
 {
 	public class LineSegment: ObjectBase
     {
-		Common.PointD startPoint;
-		Common.PointD endPoint;
+        PointD startPoint;
+        PointD endPoint;
 		Cairo.Color color;
-		List<PointD> points;
 		
-		public LineSegment(Common.PointD startPoint, Common.PointD endPoint)
+		public LineSegment(PointD startPoint, PointD endPoint)
         {
 			points = new List<PointD>();
 			points.Add(new PointD(startPoint.X, startPoint.Y));
@@ -44,7 +43,7 @@ namespace test1.Draw.Object
             g.Stroke();
 		}
 
-        public override bool IsContain(test1.Common.PointD point)
+        public override bool IsContain(PointD point)
 		{
 			return (point.X >= startPoint.X && point.X <= endPoint.X &&
 					point.Y >= startPoint.Y && point.Y <= endPoint.Y);

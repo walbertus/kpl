@@ -9,7 +9,6 @@ namespace test1.Draw.Object
 		PointD startPoint;
 		PointD endPoint;
 		Cairo.Color color;
-		List<PointD> points;
 
 		public Rectangle(PointD startPoint, PointD endPoint)
 		{

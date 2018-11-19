@@ -9,7 +9,6 @@ namespace test1.Draw.Object
 		PointD endPoint;
 		PointD startPoint;
 		Cairo.Color color;
-		List<PointD> points;
       
 		public Triangle(PointD startPoint, PointD endPoint)
 		{
