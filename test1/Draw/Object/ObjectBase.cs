@@ -32,7 +32,19 @@ namespace test1.Draw.Object
             color = new Cairo.Color(r, g, b);
         }
 
-        public abstract void Translate(double x, double y);
+        public virtual void Translate(double x, double y)
+        {
+            foreach (PointD point in points)
+            {
+                point.X += x;
+                point.Y += y;
+            }
+            startPoint.X += x;
+            endPoint.X += x;
+            startPoint.Y += y;
+            endPoint.Y += y;
+        }
+
         public abstract bool IsContain(PointD point);
         public abstract void Scale(PointD newPoint, int position);
 

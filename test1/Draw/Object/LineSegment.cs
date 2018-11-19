@@ -38,18 +38,5 @@ namespace test1.Draw.Object
                 }
             }
         }
-
-        public override void Translate(double x, double y)
-		{
-			foreach (PointD point in points)
-            {
-                point.X += x;
-                point.Y += y;
-            }
-            startPoint.X += x;
-            endPoint.X += x;
-            startPoint.Y += y;
-            endPoint.Y += y;
-		}
 	}
 }
