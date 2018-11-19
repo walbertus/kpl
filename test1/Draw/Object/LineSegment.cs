@@ -7,6 +7,7 @@ namespace test1.Draw.Object
     {	
 		public LineSegment(PointD startPoint, PointD endPoint)
         {
+            Init();
             points = new List<PointD>();
             color = new Cairo.Color(0, 0, 0);
             CreatePoints(startPoint, endPoint);

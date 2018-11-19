@@ -7,7 +7,8 @@ namespace test1.Draw.Object
 	{      
 		public Triangle(PointD startPoint, PointD endPoint)
 		{
-			points = new List<PointD>();
+            Init();
+            points = new List<PointD>();
 			color = new Cairo.Color(0, 0, 0);
             CreatePoints(startPoint, endPoint);
             this.startPoint = startPoint;

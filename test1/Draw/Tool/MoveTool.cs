@@ -15,8 +15,16 @@ namespace test1.Draw.Tool
 
 		public override void OnButtonMotionEvent(EventMotion eventArgs)
 		{
-			
-		}
+            if (activeObject != null)
+            {
+                double x = eventArgs.X - startPoint.X;
+                double y = eventArgs.Y - startPoint.Y;
+                startPoint.X = eventArgs.X;
+                startPoint.Y = eventArgs.Y;
+                activeObject.Translate(x, y);
+                Canvas.Update();
+            }
+        }
 
 		public override void OnButtonPressEvent(EventButton eventArgs)
 		{
@@ -28,21 +36,20 @@ namespace test1.Draw.Tool
 				}
 			}
 			if (activeObject != null) {
-				activeObject.ChangeColor(0, 0, 255);
+                activeObject.Select();
+				// activeObject.ChangeColor(0, 0, 255);
 				Canvas.Update();
 			}
 		}
 
 		public override void OnButtonReleaseEvent(EventButton eventArgs)
 		{
-			if (activeObject != null) {
-				double x = eventArgs.X - startPoint.X;
-				double y = eventArgs.Y - startPoint.Y;
-				activeObject.Translate(x, y);
-				activeObject.ChangeColor(0, 0, 0);
-				Canvas.Update();
-			}
-			activeObject = null;
+            if (activeObject != null)
+            {
+                activeObject.Deselect();
+                Canvas.Update();
+            }
+            activeObject = null;
 		}
 	}
 }

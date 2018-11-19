@@ -80,6 +80,9 @@
     <Compile Include="Common\PointD.cs" />
     <Compile Include="Draw\Object\ObjectConstants.cs" />
     <Compile Include="Draw\Object\State\ObjectStateBase.cs" />
+    <Compile Include="Draw\Object\State\ObjectStateNormal.cs" />
+    <Compile Include="Draw\Object\State\ObjectStatePreview.cs" />
+    <Compile Include="Draw\Object\State\ObjectStateActive.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Draw\" />

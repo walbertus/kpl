@@ -1,11 +1,9 @@
-﻿using System;
+﻿using Gdk;
 namespace test1.Draw.Object.State
 {
     public abstract class ObjectStateBase
     {
-        protected ObjectStateBase instance;
-
-        public abstract void Draw(ObjectBase obj);
+        public abstract void Draw(ObjectBase obj, Window window);
 
         public virtual void Select(ObjectBase obj)
         {
