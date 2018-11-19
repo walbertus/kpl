@@ -1,14 +1,12 @@
-﻿using Gdk;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using test1.Common;
 
 namespace test1.Draw.Object
 {
-	public class Triangle : ObjectBase
+    public class Triangle : ObjectBase
 	{
 		PointD endPoint;
 		PointD startPoint;
-		Cairo.Color color;
       
 		public Triangle(PointD startPoint, PointD endPoint)
 		{
@@ -29,20 +27,6 @@ namespace test1.Draw.Object
         {
             color = new Cairo.Color(r, g, b);
         }
-
-        public override void Draw(Window window)
-		{
-			Cairo.Context g = CairoHelper.Create(window);
-            g.LineWidth = 5;
-            g.MoveTo(points[0].X, points[0].Y);
-            foreach (PointD point in points)
-            {
-                g.LineTo(point.X, point.Y);
-            }
-            g.SetSourceColor(color);
-            g.ClosePath();
-            g.Stroke();
-		}
 
         public override bool IsContain(PointD point)
 		{

@@ -1,4 +1,5 @@
-﻿using test1.Draw.Object.State;
+﻿using Gdk;
+using test1.Draw.Object.State;
 using System.Collections.Generic;
 using test1.Common;
 
@@ -8,12 +9,26 @@ namespace test1.Draw.Object
     {
         protected ObjectStateBase state;
         protected List<PointD> points;
+        protected Cairo.Color color;
 
-        public abstract void Draw(Gdk.Window window);
+        public virtual void Draw(Window window)
+        {
+            Cairo.Context g = CairoHelper.Create(window);
+            g.LineWidth = 5;
+            g.MoveTo(points[0].X, points[0].Y);
+            foreach (PointD point in points)
+            {
+                g.LineTo(point.X, point.Y);
+            }
+            g.SetSourceColor(color);
+            g.ClosePath();
+            g.Stroke();
+        }
+
         public abstract void Translate(double x, double y);
-        public abstract bool IsContain(Common.PointD point);
+        public abstract bool IsContain(PointD point);
         public abstract void ChangeColor(int r, int g, int b);
-        public abstract void Scale(Common.PointD newPoint, int position);
+        public abstract void Scale(PointD newPoint, int position);
 
         public virtual void ChangeState(ObjectStateBase newState)
         {

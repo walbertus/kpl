@@ -1,14 +1,12 @@
-﻿using Gdk;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using test1.Common;
 
 namespace test1.Draw.Object
 {
-	public class LineSegment: ObjectBase
+    public class LineSegment: ObjectBase
     {
         PointD startPoint;
         PointD endPoint;
-		Cairo.Color color;
 		
 		public LineSegment(PointD startPoint, PointD endPoint)
         {
@@ -27,20 +25,6 @@ namespace test1.Draw.Object
         public override void ChangeColor(int r, int g, int b)
 		{
 			color = new Cairo.Color(r, g, b);
-		}
-
-        public override void Draw(Window window)
-		{
-			Cairo.Context g = CairoHelper.Create(window);
-            g.LineWidth = 5;
-            g.MoveTo(points[0].X, points[0].Y);
-            foreach (PointD point in points)
-            {
-                g.LineTo(point.X, point.Y);
-            }
-            g.SetSourceColor(color);
-            g.ClosePath();
-            g.Stroke();
 		}
 
         public override bool IsContain(PointD point)
