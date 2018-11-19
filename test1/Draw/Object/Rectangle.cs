@@ -18,11 +18,6 @@ namespace test1.Draw.Object
 			ReconfigureCornerPoints();
 		}
 
-        public override void ChangeColor(int r, int g, int b)
-        {
-            color = new Cairo.Color(r, g, b);
-        }
-
         public override bool IsContain(PointD point)
 		{
 			return (point.X >= startPoint.X && point.X <= endPoint.X &&

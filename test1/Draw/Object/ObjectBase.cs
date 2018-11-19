@@ -25,9 +25,13 @@ namespace test1.Draw.Object
             g.Stroke();
         }
 
+        public virtual void ChangeColor(int r, int g, int b)
+        {
+            color = new Cairo.Color(r, g, b);
+        }
+
         public abstract void Translate(double x, double y);
         public abstract bool IsContain(PointD point);
-        public abstract void ChangeColor(int r, int g, int b);
         public abstract void Scale(PointD newPoint, int position);
 
         public virtual void ChangeState(ObjectStateBase newState)
