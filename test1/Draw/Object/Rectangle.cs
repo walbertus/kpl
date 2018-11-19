@@ -18,13 +18,18 @@ namespace test1.Draw.Object
 		void RecreatePoints(PointD startPoint, PointD endPoint)
 		{
 			points.Clear();
-			points.Add(new PointD(startPoint.X, startPoint.Y));
+            CreatePoints(startPoint, endPoint);
+		}
+
+        void CreatePoints(PointD startPoint, PointD endPoint)
+        {
+            points.Add(new PointD(startPoint.X, startPoint.Y));
             points.Add(new PointD(endPoint.X, startPoint.Y));
             points.Add(new PointD(endPoint.X, endPoint.Y));
             points.Add(new PointD(startPoint.X, endPoint.Y));
-		}
+        }
 
-		public void ReconfigureCornerPoints()
+        public void ReconfigureCornerPoints()
 		{
 			double minX = System.Math.Min(startPoint.X, endPoint.X);
             double maxX = System.Math.Max(startPoint.X, endPoint.X);
