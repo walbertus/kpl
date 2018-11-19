@@ -10,6 +10,8 @@ namespace test1.Draw.Object
         protected ObjectStateBase state;
         protected List<PointD> points;
         protected Cairo.Color color;
+        protected PointD startPoint;
+        protected PointD endPoint;
 
         public virtual void Draw(Window window)
         {

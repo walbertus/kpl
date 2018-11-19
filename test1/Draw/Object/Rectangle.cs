@@ -5,9 +5,6 @@ namespace test1.Draw.Object
 {
     public class Rectangle : ObjectBase
 	{
-		PointD startPoint;
-		PointD endPoint;
-
 		public Rectangle(PointD startPoint, PointD endPoint)
 		{
 			points = new List<PointD>();
@@ -39,8 +36,8 @@ namespace test1.Draw.Object
             double maxX = System.Math.Max(startPoint.X, endPoint.X);
             double minY = System.Math.Min(startPoint.Y, endPoint.Y);
             double maxY = System.Math.Max(startPoint.Y, endPoint.Y);
-			this.startPoint = new PointD(minX, minY);
-            this.endPoint = new PointD(maxX, maxY);
+            startPoint = new PointD(minX, minY);
+            endPoint = new PointD(maxX, maxY);
 		}
 
         public override void Scale(PointD newPoint, int position)

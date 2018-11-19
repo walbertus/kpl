@@ -4,10 +4,7 @@ using test1.Common;
 namespace test1.Draw.Object
 {
     public class Triangle : ObjectBase
-	{
-		PointD endPoint;
-		PointD startPoint;
-      
+	{      
 		public Triangle(PointD startPoint, PointD endPoint)
 		{
 			points = new List<PointD>();

@@ -4,10 +4,7 @@ using test1.Common;
 namespace test1.Draw.Object
 {
     public class LineSegment: ObjectBase
-    {
-        PointD startPoint;
-        PointD endPoint;
-		
+    {	
 		public LineSegment(PointD startPoint, PointD endPoint)
         {
 			points = new List<PointD>();
