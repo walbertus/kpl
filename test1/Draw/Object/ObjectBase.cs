@@ -45,7 +45,12 @@ namespace test1.Draw.Object
             endPoint.Y += y;
         }
 
-        public abstract bool IsContain(PointD point);
+        public virtual bool IsContain(PointD point)
+        {
+            return (point.X >= startPoint.X && point.X <= endPoint.X &&
+                    point.Y >= startPoint.Y && point.Y <= endPoint.Y);
+        }
+
         public abstract void Scale(PointD newPoint, int position);
 
         public virtual void ChangeState(ObjectStateBase newState)

@@ -20,12 +20,6 @@ namespace test1.Draw.Object
             this.endPoint = new PointD(maxX, maxY);
 		}
 
-        public override bool IsContain(PointD point)
-		{
-			return (point.X >= startPoint.X && point.X <= endPoint.X &&
-                    point.Y >= startPoint.Y && point.Y <= endPoint.Y);
-		}
-
         public override void Scale(PointD newPoint, int position)
         {
             if (position == ObjectConstants.OBJECT_CONTROL_BOTTOM_RIGHT)

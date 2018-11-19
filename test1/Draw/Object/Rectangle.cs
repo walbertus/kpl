@@ -15,12 +15,6 @@ namespace test1.Draw.Object
 			ReconfigureCornerPoints();
 		}
 
-        public override bool IsContain(PointD point)
-		{
-			return (point.X >= startPoint.X && point.X <= endPoint.X &&
-                    point.Y >= startPoint.Y && point.Y <= endPoint.Y);
-		}
-
 		void RecreatePoints(PointD startPoint, PointD endPoint)
 		{
 			points.Clear();
