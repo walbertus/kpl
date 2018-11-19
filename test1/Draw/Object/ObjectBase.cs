@@ -51,6 +51,23 @@ namespace test1.Draw.Object
                     point.Y >= startPoint.Y && point.Y <= endPoint.Y);
         }
 
+        public virtual void ReconfigureCornerPoints()
+        {
+            double minX = System.Math.Min(startPoint.X, endPoint.X);
+            double maxX = System.Math.Max(startPoint.X, endPoint.X);
+            double minY = System.Math.Min(startPoint.Y, endPoint.Y);
+            double maxY = System.Math.Max(startPoint.Y, endPoint.Y);
+            startPoint = new PointD(minX, minY);
+            endPoint = new PointD(maxX, maxY);
+        }
+
+        protected virtual void RecreatePoints(PointD startPoint, PointD endPoint)
+        {
+            points.Clear();
+            CreatePoints(startPoint, endPoint);
+        }
+
+        protected abstract void CreatePoints(PointD startPoint, PointD endPoint);
         public abstract void Scale(PointD newPoint, int position);
 
         public virtual void ChangeState(ObjectStateBase newState)

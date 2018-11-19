@@ -9,35 +9,19 @@ namespace test1.Draw.Object
 		{
 			points = new List<PointD>();
 			color = new Cairo.Color(0, 0, 0);
-			RecreatePoints(startPoint, endPoint);
+			CreatePoints(startPoint, endPoint);
 			this.startPoint = startPoint;
 			this.endPoint = endPoint;
 			ReconfigureCornerPoints();
 		}
 
-		void RecreatePoints(PointD startPoint, PointD endPoint)
-		{
-			points.Clear();
-            CreatePoints(startPoint, endPoint);
-		}
-
-        void CreatePoints(PointD startPoint, PointD endPoint)
+        protected override void CreatePoints(PointD startPoint, PointD endPoint)
         {
             points.Add(new PointD(startPoint.X, startPoint.Y));
             points.Add(new PointD(endPoint.X, startPoint.Y));
             points.Add(new PointD(endPoint.X, endPoint.Y));
             points.Add(new PointD(startPoint.X, endPoint.Y));
         }
-
-        public void ReconfigureCornerPoints()
-		{
-			double minX = System.Math.Min(startPoint.X, endPoint.X);
-            double maxX = System.Math.Max(startPoint.X, endPoint.X);
-            double minY = System.Math.Min(startPoint.Y, endPoint.Y);
-            double maxY = System.Math.Max(startPoint.Y, endPoint.Y);
-            startPoint = new PointD(minX, minY);
-            endPoint = new PointD(maxX, maxY);
-		}
 
         public override void Scale(PointD newPoint, int position)
 		{
