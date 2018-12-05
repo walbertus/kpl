@@ -30,7 +30,7 @@ namespace test1.Draw.Tool
             AddTool(tool);
 			tool = new LineSegmentTool("lineSegmentTool", "Line", Canvas);
             AddTool(tool);
-			tool = new MoveTool("moveTool", "Move", Canvas);
+			tool = new SelectTool("selectTool", "Select", Canvas);
             AddTool(tool);
 		}
 

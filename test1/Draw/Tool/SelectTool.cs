@@ -3,13 +3,13 @@ using System.Collections.Generic;
 
 namespace test1.Draw.Tool
 {
-	public class MoveTool: ToolBase
+	public class SelectTool: ToolBase
     {
         bool clicked;
         List<Object.ObjectBase> activeObjects;
 		Common.PointD startPoint;
 		
-		public MoveTool(string name, string label, Canvas.DefaultCanvas canvas)
+		public SelectTool(string name, string label, Canvas.DefaultCanvas canvas)
             : base(name, label, canvas)
         {
             activeObjects = new List<Object.ObjectBase>();

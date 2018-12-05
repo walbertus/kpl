@@ -76,7 +76,7 @@
     <Compile Include="Draw\Tool\RectangleTool.cs" />
     <Compile Include="Draw\Tool\TriangleTool.cs" />
     <Compile Include="Draw\Tool\LineSegmentTool.cs" />
-    <Compile Include="Draw\Tool\MoveTool.cs" />
+    <Compile Include="Draw\Tool\SelectTool.cs" />
     <Compile Include="Common\PointD.cs" />
     <Compile Include="Draw\Object\ObjectConstants.cs" />
     <Compile Include="Draw\Object\State\ObjectStateBase.cs" />
