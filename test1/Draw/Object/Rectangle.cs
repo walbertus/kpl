@@ -8,8 +8,6 @@ namespace test1.Draw.Object
 		public Rectangle(PointD startPoint, PointD endPoint)
 		{
             Init();
-            points = new List<PointD>();
-			color = new Cairo.Color(0, 0, 0);
 			CreatePoints(startPoint, endPoint);
 			this.startPoint = startPoint;
 			this.endPoint = endPoint;

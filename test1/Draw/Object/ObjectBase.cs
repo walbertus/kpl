@@ -19,6 +19,8 @@ namespace test1.Draw.Object
         {
             ID = System.Guid.NewGuid();
             state = ObjectStatePreview.GetInstance();
+            points = new List<PointD>();
+            color = new Cairo.Color(0, 0, 0);
         }
 
         public virtual void Draw(Window window)
