@@ -6,6 +6,7 @@ namespace test1.Draw.Tool
 	public class SelectTool: ToolBase
     {
         bool clicked;
+        bool isControlKeyPressed;
         List<Object.ObjectBase> activeObjects;
 		Common.PointD startPoint;
 		
@@ -14,6 +15,7 @@ namespace test1.Draw.Tool
         {
             activeObjects = new List<Object.ObjectBase>();
             clicked = false;
+            isControlKeyPressed = false;
         }
 
 		public override void OnButtonMotionEvent(EventMotion eventArgs)
@@ -66,12 +68,24 @@ namespace test1.Draw.Tool
 
         public override void OnKeyPressEvent(EventKey eventArgs)
         {
-
+            switch (eventArgs.Key)
+            {
+                case Key.Control_L:
+                case Key.Control_R:
+                    isControlKeyPressed = true;
+                    break;
+            }
         }
 
         public override void OnKeyReleaseEvent(EventKey eventArgs)
         {
-
+            switch(eventArgs.Key)
+            {
+                case Key.Control_L:
+                case Key.Control_R:
+                    isControlKeyPressed = false;
+                    break;
+            }
         }
     }
 }
