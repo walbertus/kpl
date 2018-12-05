@@ -9,7 +9,7 @@ namespace test1.Draw.Object
     {
         List<ObjectBase> objectList;
 
-        public Group(PointD startPoint, PointD endPoint)
+        public Group()
         {
             Init();
             objectList = new List<ObjectBase>();

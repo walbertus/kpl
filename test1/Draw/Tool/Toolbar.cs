@@ -74,5 +74,22 @@ namespace test1.Draw.Tool
 				ActiveTool.OnButtonReleaseEvent(eventArgs);
             }
         }
-	}
+
+        public void OnKeyPressEvent(Gdk.EventKey eventArgs)
+        {
+            if (ActiveTool != null)
+            {
+                ActiveTool.OnKeyPressEvent(eventArgs);
+            }
+        }
+
+        public void OnKeyReleaseEvent(Gdk.EventKey eventArgs)
+        {
+            if (ActiveTool != null)
+            {
+                ActiveTool.OnKeyReleaseEvent(eventArgs);
+            }
+        }
+
+    }
 }

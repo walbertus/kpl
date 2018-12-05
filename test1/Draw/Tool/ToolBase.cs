@@ -21,5 +21,7 @@ namespace test1.Draw.Tool
 		public abstract void OnButtonPressEvent(Gdk.EventButton eventArgs);
 		public abstract void OnButtonReleaseEvent(Gdk.EventButton eventArgs);
 		public abstract void OnButtonMotionEvent(Gdk.EventMotion eventArgs);
+        public abstract void OnKeyPressEvent(Gdk.EventKey eventArgs);
+        public abstract void OnKeyReleaseEvent(Gdk.EventKey eventArgs);
     }
 }

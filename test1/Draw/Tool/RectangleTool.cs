@@ -37,5 +37,15 @@ namespace test1.Draw.Tool
 			activeObject = null;
             Canvas.Update();
         }
+
+        public override void OnKeyPressEvent(EventKey eventArgs)
+        {
+
+        }
+
+        public override void OnKeyReleaseEvent(EventKey eventArgs)
+        {
+
+        }
     }
 }

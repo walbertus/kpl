@@ -53,4 +53,14 @@ public partial class MainWindow : Window
 	{
 		toolbar.OnButtonMotionEvent(args.Event);
 	}
+
+    protected void OnDrawingAreaKeyPressEvent(object o, KeyPressEventArgs args)
+    {
+        toolbar.OnKeyPressEvent(args.Event);
+    }
+
+    protected void OnDrawingAreaKeyReleaseEvent(object o, KeyReleaseEventArgs args)
+    {
+        toolbar.OnKeyReleaseEvent(args.Event);
+    }
 }
