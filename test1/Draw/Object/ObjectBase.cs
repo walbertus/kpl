@@ -7,6 +7,8 @@ namespace test1.Draw.Object
 {
     public abstract class ObjectBase
     {
+        public System.Guid ID { get; set; }
+
         protected ObjectStateBase state;
         protected List<PointD> points;
         protected Cairo.Color color;
@@ -15,6 +17,7 @@ namespace test1.Draw.Object
 
         protected virtual void Init()
         {
+            ID = System.Guid.NewGuid();
             state = ObjectStatePreview.GetInstance();
         }
 
