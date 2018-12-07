@@ -23,15 +23,10 @@ namespace test1.Draw.Tool
 
 		void CreateTools()
 		{
-			ITool tool;
-			tool = new RectangleTool("rectangleTool", "Rectangle", Canvas);
-			AddTool(tool);
-			tool = new TriangleTool("triangleTool", "Triangle", Canvas);
-            AddTool(tool);
-			tool = new LineSegmentTool("lineSegmentTool", "Line", Canvas);
-            AddTool(tool);
-			tool = new SelectTool("selectTool", "Select", Canvas);
-            AddTool(tool);
+			AddTool(new RectangleTool("rectangleTool", "Rectangle", Canvas));
+            AddTool(new TriangleTool("triangleTool", "Triangle", Canvas));
+            AddTool(new LineSegmentTool("lineSegmentTool", "Line", Canvas));
+            AddTool(new SelectTool("selectTool", "Select", Canvas));
 		}
 
 		void AddTool(ITool tool)
