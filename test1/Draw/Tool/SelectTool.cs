@@ -31,6 +31,19 @@ namespace test1.Draw.Tool
             activeObjects.Add(newObj);
         }
 
+        void UngroupObjects()
+        {
+            Object.Group group = (Object.Group)activeObjects[0];
+            activeObjects.Remove(group);
+            group.Deselect();
+            Canvas.RemoveDrawObject(group);
+            foreach (Object.ObjectBase obj in group.ObjectList)
+            {
+                Canvas.AddDrawObject(obj);
+            }
+            Canvas.Update();
+        }
+
         public override void OnButtonMotionEvent(EventMotion eventArgs)
 		{
             if (clicked)
@@ -93,6 +106,13 @@ namespace test1.Draw.Tool
                     if (isControlKeyPressed && activeObjects.Count > 1)
                     {
                         GroupObjects();
+                    }
+                    break;
+                case Key.B:
+                case Key.b:
+                    if (isControlKeyPressed && activeObjects.Count == 1 && activeObjects[0] is Object.Group)
+                    {
+                        UngroupObjects();
                     }
                     break;
             }
