@@ -27,6 +27,7 @@ namespace test1.Draw.Tool
             Common.PointD endPoint = new Common.PointD(eventArgs.X + 1, eventArgs.Y + 1);
             activeObject = new Object.Triangle(startPoint, endPoint);
             Canvas.AddDrawObject(activeObject);
+            Canvas.Update();
         }
 
         public override void OnButtonReleaseEvent(EventButton eventArgs)

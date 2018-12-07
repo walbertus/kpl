@@ -9,10 +9,17 @@ namespace test1.Draw.Object
     {
         List<ObjectBase> objectList;
 
+        public List<ObjectBase> ObjectList { get => objectList; }
+
         public Group()
         {
             Init();
             objectList = new List<ObjectBase>();
+        }
+
+        public void AddDrawObject(ObjectBase obj)
+        {
+            objectList.Add(obj);
         }
 
         public override void Scale(PointD newPoint, int position)

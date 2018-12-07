@@ -1,5 +1,4 @@
-﻿using System;
-using Gdk;
+﻿using Gdk;
 using System.Collections.Generic;
 using test1.Draw.Object;
 
@@ -7,17 +6,17 @@ namespace test1.Draw.Canvas
 {
 	public class DefaultCanvas : CanvasBase
 	{
-		Gdk.Window _drawWindow;
-		readonly List<Object.ObjectBase> _drawObjects;
+        Window _drawWindow;
+		readonly List<ObjectBase> _drawObjects;
 
-		public DefaultCanvas(Gdk.Window window)
+		public DefaultCanvas(Window window)
 			: base(window)
 		{
-			_drawObjects = new List<Object.ObjectBase>();
+			_drawObjects = new List<ObjectBase>();
 			_drawWindow = window;
 		}
 
-		public override Gdk.Window DrawWindow
+		public override Window DrawWindow
 		{
 			get => _drawWindow;
 			set => _drawWindow = value;
@@ -25,14 +24,17 @@ namespace test1.Draw.Canvas
 
 		public List<ObjectBase> DrawObjects => _drawObjects;
 
-		public void AddDrawObject(Object.ObjectBase drawObject)
+		public void AddDrawObject(ObjectBase drawObject)
 		{
 			_drawObjects.Add(drawObject);
-			DrawWindow.Clear();
-			Draw();
 		}
 
-		public void Update()
+        public void RemoveDrawObject(ObjectBase drawObject)
+        {
+            _drawObjects.Remove(drawObject);
+        }
+
+        public void Update()
 		{
 			DrawWindow.Clear();
 			Draw();
@@ -40,7 +42,7 @@ namespace test1.Draw.Canvas
 
 		public void Draw()
 		{
-			foreach (Object.ObjectBase drawObject in _drawObjects)
+			foreach (ObjectBase drawObject in _drawObjects)
 			{
 				drawObject.Draw(DrawWindow);
 			}

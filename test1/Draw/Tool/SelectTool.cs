@@ -18,7 +18,20 @@ namespace test1.Draw.Tool
             isControlKeyPressed = false;
         }
 
-		public override void OnButtonMotionEvent(EventMotion eventArgs)
+        void GroupObjects()
+        {
+            Object.Group newObj = new Object.Group();
+            foreach(Object.ObjectBase obj in activeObjects)
+            {
+                newObj.AddDrawObject(obj);
+                Canvas.RemoveDrawObject(obj);
+            }
+            Canvas.AddDrawObject(newObj);
+            activeObjects.Clear();
+            activeObjects.Add(newObj);
+        }
+
+        public override void OnButtonMotionEvent(EventMotion eventArgs)
 		{
             if (clicked)
             {
@@ -68,11 +81,19 @@ namespace test1.Draw.Tool
 
         public override void OnKeyPressEvent(EventKey eventArgs)
         {
+            System.Console.Out.WriteLine(eventArgs.Key);
             switch (eventArgs.Key)
             {
                 case Key.Control_L:
                 case Key.Control_R:
                     isControlKeyPressed = true;
+                    break;
+                case Key.g:
+                case Key.G:
+                    if (isControlKeyPressed && activeObjects.Count > 1)
+                    {
+                        GroupObjects();
+                    }
                     break;
             }
         }
