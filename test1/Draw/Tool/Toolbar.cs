@@ -9,11 +9,11 @@ namespace test1.Draw.Tool
 		Canvas.DefaultCanvas Canvas;
 		System.Collections.IDictionary ToolDictionary;
 		List<Button> _buttons;
-		ToolBase ActiveTool;
+		ITool ActiveTool;
 
 		public Toolbar(Canvas.DefaultCanvas canvas)
 		{
-			ToolDictionary = new Dictionary<string, ToolBase>();
+			ToolDictionary = new Dictionary<string, ITool>();
 			Canvas = canvas;
 			_buttons = new List<Button>();
 			CreateTools();
@@ -23,7 +23,7 @@ namespace test1.Draw.Tool
 
 		void CreateTools()
 		{
-			ToolBase tool;
+			ITool tool;
 			tool = new RectangleTool("rectangleTool", "Rectangle", Canvas);
 			AddTool(tool);
 			tool = new TriangleTool("triangleTool", "Triangle", Canvas);
@@ -34,7 +34,7 @@ namespace test1.Draw.Tool
             AddTool(tool);
 		}
 
-		void AddTool(ToolBase tool)
+		void AddTool(ITool tool)
 		{
 			ToolDictionary[tool.Name] = tool;
 			Button button = new Button
@@ -49,7 +49,7 @@ namespace test1.Draw.Tool
 
 		public void ChangeTool(string name)
 		{
-			ActiveTool = (ToolBase)ToolDictionary[name];
+			ActiveTool = (ITool)ToolDictionary[name];
 			Console.Out.WriteLine("Tool change to " + name);
 		}
 

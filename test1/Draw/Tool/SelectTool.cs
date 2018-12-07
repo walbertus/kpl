@@ -3,20 +3,28 @@ using System.Collections.Generic;
 
 namespace test1.Draw.Tool
 {
-	public class SelectTool: ToolBase
+	public class SelectTool: ITool
     {
+        string _name, _label;
+        Canvas.DefaultCanvas _canvas;
         bool clicked;
         bool isControlKeyPressed;
         List<Object.ObjectBase> activeObjects;
 		Common.PointD startPoint;
 		
 		public SelectTool(string name, string label, Canvas.DefaultCanvas canvas)
-            : base(name, label, canvas)
         {
+            Name = name;
+            Label = label;
+            Canvas = canvas;
             activeObjects = new List<Object.ObjectBase>();
             clicked = false;
             isControlKeyPressed = false;
         }
+
+        public string Name { get => _name; set => _name = value; }
+        public string Label { get => _label; set => _label = value; }
+        Canvas.DefaultCanvas Canvas { get => _canvas; set => _canvas = value; }
 
         void GroupObjects()
         {
@@ -44,7 +52,7 @@ namespace test1.Draw.Tool
             Canvas.Update();
         }
 
-        public override void OnButtonMotionEvent(EventMotion eventArgs)
+        public void OnButtonMotionEvent(EventMotion eventArgs)
 		{
             if (clicked)
             {
@@ -60,7 +68,7 @@ namespace test1.Draw.Tool
             }
         }
 
-		public override void OnButtonPressEvent(EventButton eventArgs)
+		public void OnButtonPressEvent(EventButton eventArgs)
 		{
             clicked = true;
 			startPoint = new Common.PointD(eventArgs.X, eventArgs.Y);
@@ -87,12 +95,12 @@ namespace test1.Draw.Tool
             Canvas.Update();
         }
 
-		public override void OnButtonReleaseEvent(EventButton eventArgs)
+		public void OnButtonReleaseEvent(EventButton eventArgs)
 		{
             clicked = false;
 		}
 
-        public override void OnKeyPressEvent(EventKey eventArgs)
+        public void OnKeyPressEvent(EventKey eventArgs)
         {
             System.Console.Out.WriteLine(eventArgs.Key);
             switch (eventArgs.Key)
@@ -118,7 +126,7 @@ namespace test1.Draw.Tool
             }
         }
 
-        public override void OnKeyReleaseEvent(EventKey eventArgs)
+        public void OnKeyReleaseEvent(EventKey eventArgs)
         {
             switch(eventArgs.Key)
             {

@@ -1,19 +1,26 @@
-﻿using System;
-using Gdk;
+﻿using Gdk;
 
 namespace test1.Draw.Tool
 {
-    public class RectangleTool : ToolBase
+    public class RectangleTool : ITool
     {
-		Object.Rectangle activeObject;
+        string _name, _label;
+        Canvas.DefaultCanvas _canvas;
+        Object.Rectangle activeObject;
 
         public RectangleTool(string name, string label, Canvas.DefaultCanvas canvas)
-            : base(name, label, canvas)
         {
-			activeObject = null;
+            Name = name;
+            Label = label;
+            Canvas = canvas;
+            activeObject = null;
         }
 
-		public override void OnButtonMotionEvent(EventMotion eventArgs)
+        public string Name { get => _name; set => _name = value; }
+        public string Label { get => _label; set => _label = value; }
+        Canvas.DefaultCanvas Canvas { get => _canvas; set => _canvas = value; }
+
+        public void OnButtonMotionEvent(EventMotion eventArgs)
 		{
 			if (activeObject != null) {
 				Common.PointD newPoint = new Common.PointD(eventArgs.X, eventArgs.Y);
@@ -22,7 +29,7 @@ namespace test1.Draw.Tool
 			}
 		}
 
-		public override void OnButtonPressEvent(EventButton eventArgs)
+		public void OnButtonPressEvent(EventButton eventArgs)
         {
 			Common.PointD startPoint = new Common.PointD(eventArgs.X, eventArgs.Y);
 			Common.PointD endPoint = new Common.PointD(eventArgs.X + 1, eventArgs.Y + 1);
@@ -31,7 +38,7 @@ namespace test1.Draw.Tool
             Canvas.Update();
         }
 
-        public override void OnButtonReleaseEvent(EventButton eventArgs)
+        public void OnButtonReleaseEvent(EventButton eventArgs)
         {
 			activeObject.ReconfigureCornerPoints();
             activeObject.Deselect();
@@ -39,12 +46,12 @@ namespace test1.Draw.Tool
             Canvas.Update();
         }
 
-        public override void OnKeyPressEvent(EventKey eventArgs)
+        public void OnKeyPressEvent(EventKey eventArgs)
         {
 
         }
 
-        public override void OnKeyReleaseEvent(EventKey eventArgs)
+        public void OnKeyReleaseEvent(EventKey eventArgs)
         {
 
         }
