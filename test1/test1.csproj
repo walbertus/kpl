@@ -84,6 +84,7 @@
     <Compile Include="Draw\Object\State\ObjectStatePreview.cs" />
     <Compile Include="Draw\Object\State\ObjectStateActive.cs" />
     <Compile Include="Draw\Object\Group.cs" />
+    <Compile Include="Draw\Tool\ToolFactory.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Draw\" />

@@ -23,10 +23,10 @@ namespace test1.Draw.Tool
 
 		void CreateTools()
 		{
-			AddTool(new RectangleTool("rectangleTool", "Rectangle", Canvas));
-            AddTool(new TriangleTool("triangleTool", "Triangle", Canvas));
-            AddTool(new LineSegmentTool("lineSegmentTool", "Line", Canvas));
-            AddTool(new SelectTool("selectTool", "Select", Canvas));
+            AddTool(ToolFactory.CreateTool(ToolFactory.TYPE_RECTANGLE, "rectangleTool", "Rectangle", Canvas));
+            AddTool(ToolFactory.CreateTool(ToolFactory.TYPE_TRIANGLE, "triangleTool", "Triangle", Canvas));
+            AddTool(ToolFactory.CreateTool(ToolFactory.TYPE_LINE_SEGMENT, "lineSegmentTool", "Line", Canvas));
+            AddTool(ToolFactory.CreateTool(ToolFactory.TYPE_SELECT, "selectTool", "Select", Canvas));
 		}
 
 		void AddTool(ITool tool)
