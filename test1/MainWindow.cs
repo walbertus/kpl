@@ -3,7 +3,7 @@ using Gtk;
 
 public partial class MainWindow : Window
 {
-	test1.Draw.Canvas.DefaultCanvas canvas;
+	test1.Draw.Canvas.ICanvas canvas;
 	test1.Draw.Tool.Toolbar toolbar;
 
     public MainWindow() : base(Gtk.WindowType.Toplevel)

@@ -30,7 +30,7 @@ public partial class MainWindow
 		w1.Expand = false;
 		// Container child vbox2.Gtk.Box+BoxChild
 		this.drawingarea = new global::Gtk.DrawingArea();
-		this.drawingarea.Events = ((global::Gdk.EventMask.AllEventsMask));
+		this.drawingarea.Events = (global::Gdk.EventMask.AllEventsMask);
 		this.drawingarea.Name = "drawingarea";
 		this.vbox2.Add(this.drawingarea);
 		global::Gtk.Box.BoxChild w2 = ((global::Gtk.Box.BoxChild)(this.vbox2[this.drawingarea]));

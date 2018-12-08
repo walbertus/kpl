@@ -6,12 +6,12 @@ namespace test1.Draw.Tool
 {
 	public class Toolbar
 	{
-		Canvas.DefaultCanvas Canvas;
+		Canvas.ICanvas Canvas;
 		System.Collections.IDictionary ToolDictionary;
 		List<Button> _buttons;
 		ITool ActiveTool;
 
-		public Toolbar(Canvas.DefaultCanvas canvas)
+		public Toolbar(Canvas.ICanvas canvas)
 		{
 			ToolDictionary = new Dictionary<string, ITool>();
 			Canvas = canvas;

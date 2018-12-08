@@ -4,19 +4,18 @@ using test1.Draw.Object;
 
 namespace test1.Draw.Canvas
 {
-	public class DefaultCanvas : CanvasBase
+	public class DefaultCanvas : ICanvas
 	{
         Window _drawWindow;
 		readonly List<ObjectBase> _drawObjects;
 
 		public DefaultCanvas(Window window)
-			: base(window)
 		{
 			_drawObjects = new List<ObjectBase>();
 			_drawWindow = window;
 		}
 
-		public override Window DrawWindow
+		public Window DrawWindow
 		{
 			get => _drawWindow;
 			set => _drawWindow = value;

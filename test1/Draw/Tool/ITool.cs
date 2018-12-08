@@ -1,6 +1,6 @@
 ﻿namespace test1.Draw.Tool
 {
-	interface ITool
+	public interface ITool
     {
 		string Name { get; set; }
 		string Label { get; set; }

@@ -5,10 +5,10 @@ namespace test1.Draw.Tool
     public class RectangleTool : ITool
     {
         string _name, _label;
-        Canvas.DefaultCanvas _canvas;
+        Canvas.ICanvas _canvas;
         Object.Rectangle activeObject;
 
-        public RectangleTool(string name, string label, Canvas.DefaultCanvas canvas)
+        public RectangleTool(string name, string label, Canvas.ICanvas canvas)
         {
             Name = name;
             Label = label;
@@ -18,7 +18,7 @@ namespace test1.Draw.Tool
 
         public string Name { get => _name; set => _name = value; }
         public string Label { get => _label; set => _label = value; }
-        Canvas.DefaultCanvas Canvas { get => _canvas; set => _canvas = value; }
+        Canvas.ICanvas Canvas { get => _canvas; set => _canvas = value; }
 
         public void OnButtonMotionEvent(EventMotion eventArgs)
 		{
