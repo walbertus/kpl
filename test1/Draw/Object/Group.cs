@@ -11,6 +11,19 @@ namespace test1.Draw.Object
 
         public List<ObjectBase> ObjectList { get => objectList; }
 
+        public override List<PointD> Points
+        {
+            get
+            {
+                List<PointD> childPoints = new List<PointD>();
+                foreach (ObjectBase obj in objectList)
+                {
+                    childPoints.AddRange(obj.Points);
+                }
+                return childPoints;
+            }
+        }
+
         public Group()
         {
             Init();

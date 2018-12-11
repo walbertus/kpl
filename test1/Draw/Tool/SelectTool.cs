@@ -1,5 +1,6 @@
 ﻿using Gdk;
 using System.Collections.Generic;
+using test1.Common;
 
 namespace test1.Draw.Tool
 {
@@ -52,6 +53,23 @@ namespace test1.Draw.Tool
             Canvas.Update();
         }
 
+        void CreateConvex()
+        {
+            List<PointD> points = new List<PointD>();
+            foreach(Object.ObjectBase obj in activeObjects)
+            {
+                points.AddRange(obj.Points);
+                Canvas.RemoveDrawObject(obj);
+            }
+            Object.Convex convex = new Object.Convex(points);
+            Canvas.AddDrawObject(convex);
+            convex.Deselect();
+            convex.Select();
+            activeObjects.Clear();
+            activeObjects.Add(convex);
+            Canvas.Update();
+        }
+
         public void OnButtonMotionEvent(EventMotion eventArgs)
 		{
             if (clicked)
@@ -80,8 +98,8 @@ namespace test1.Draw.Tool
                     {
                         drawObject.Select();
                         activeObjects.Add(drawObject);
+                        break;
                     }
-                    break;
 				}
 			}
             if (!found)
@@ -121,6 +139,13 @@ namespace test1.Draw.Tool
                     if (isControlKeyPressed && activeObjects.Count == 1 && activeObjects[0] is Object.Group)
                     {
                         UngroupObjects();
+                    }
+                    break;
+                case Key.X:
+                case Key.x:
+                    if (isControlKeyPressed && activeObjects.Count > 0)
+                    {
+                        CreateConvex();
                     }
                     break;
             }

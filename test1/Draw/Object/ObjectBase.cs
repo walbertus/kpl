@@ -2,13 +2,13 @@
 using test1.Draw.Object.State;
 using System.Collections.Generic;
 using test1.Common;
+using GLib;
 
 namespace test1.Draw.Object
 {
     public abstract class ObjectBase
     {
         public System.Guid ID { get; set; }
-
         protected ObjectStateBase state;
         protected List<PointD> points;
         protected Cairo.Color color;
@@ -22,6 +22,8 @@ namespace test1.Draw.Object
             points = new List<PointD>();
             color = new Cairo.Color(0, 0, 0);
         }
+
+        public virtual List<PointD> Points { get => points; }
 
         public virtual void Draw(Window window)
         {
