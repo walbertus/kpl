@@ -17,7 +17,9 @@ namespace test1.Draw.Object
         protected override void CreatePoints(PointD startPoint, PointD endPoint)
         {
             points.Add(new PointD(startPoint.X, startPoint.Y));
-            points.Add(new PointD(endPoint.X, endPoint.Y));        }
+            points.Add(new PointD(endPoint.X, endPoint.Y));
+            Notify();
+        }
 
         public override void Scale(PointD newPoint, int position)
         {

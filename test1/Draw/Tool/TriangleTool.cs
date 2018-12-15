@@ -26,7 +26,6 @@ namespace test1.Draw.Tool
             {
                 Common.PointD newPoint = new Common.PointD(eventArgs.X, eventArgs.Y);
                 activeObject.Scale(newPoint, Object.ObjectConstants.OBJECT_CONTROL_BOTTOM_RIGHT);
-                Canvas.Update();
             }
         }
 
@@ -35,6 +34,7 @@ namespace test1.Draw.Tool
             Common.PointD startPoint = new Common.PointD(eventArgs.X, eventArgs.Y);
             Common.PointD endPoint = new Common.PointD(eventArgs.X + 1, eventArgs.Y + 1);
             activeObject = new Object.Triangle(startPoint, endPoint);
+            activeObject.Attach(Canvas);
             Canvas.AddDrawObject(activeObject);
             Canvas.Update();
         }
@@ -44,7 +44,6 @@ namespace test1.Draw.Tool
             activeObject.ReconfigureCornerPoints();
             activeObject.Deselect();
             activeObject = null;
-            Canvas.Update();
         }
 
         public void OnKeyPressEvent(EventKey eventArgs)

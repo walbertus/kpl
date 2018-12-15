@@ -86,6 +86,8 @@
     <Compile Include="Draw\Object\Group.cs" />
     <Compile Include="Draw\Tool\ToolFactory.cs" />
     <Compile Include="Draw\Object\Convex.cs" />
+    <Compile Include="Common\IObserver.cs" />
+    <Compile Include="Common\IObservable.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Draw\" />

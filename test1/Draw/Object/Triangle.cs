@@ -19,6 +19,7 @@ namespace test1.Draw.Object
             points.Add(new PointD((startPoint.X + endPoint.X) / 2, startPoint.Y));
             points.Add(new PointD(endPoint.X, endPoint.Y));
             points.Add(new PointD(startPoint.X, endPoint.Y));
+            Notify();
         }
 
         public override void Scale(PointD newPoint, int position)

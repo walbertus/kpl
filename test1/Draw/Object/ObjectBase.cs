@@ -2,11 +2,10 @@
 using test1.Draw.Object.State;
 using System.Collections.Generic;
 using test1.Common;
-using GLib;
 
 namespace test1.Draw.Object
 {
-    public abstract class ObjectBase
+    public abstract class ObjectBase: IObservable
     {
         public System.Guid ID { get; set; }
         protected ObjectStateBase state;
@@ -14,6 +13,7 @@ namespace test1.Draw.Object
         protected Cairo.Color color;
         protected PointD startPoint;
         protected PointD endPoint;
+        protected List<IObserver> observers;
 
         protected virtual void Init()
         {
@@ -21,6 +21,7 @@ namespace test1.Draw.Object
             state = ObjectStatePreview.GetInstance();
             points = new List<PointD>();
             color = new Cairo.Color(0, 0, 0);
+            this.observers = new List<IObserver>();
         }
 
         public virtual List<PointD> Points { get => points; }
@@ -87,6 +88,7 @@ namespace test1.Draw.Object
         public virtual void ChangeColor(int r, int g, int b)
         {
             color = new Cairo.Color(r, g, b);
+            Notify();
         }
 
         public virtual void Translate(double x, double y)
@@ -100,6 +102,7 @@ namespace test1.Draw.Object
             endPoint.X += x;
             startPoint.Y += y;
             endPoint.Y += y;
+            Notify();
         }
 
         public virtual bool IsContain(PointD point)
@@ -130,6 +133,20 @@ namespace test1.Draw.Object
         public virtual void ChangeState(ObjectStateBase newState)
         {
             this.state = newState;
+            Notify();
+        }
+
+        public void Attach(IObserver observer)
+        {
+            observers.Add(observer);
+        }
+
+        protected void Notify()
+        {
+            foreach(IObserver observer in observers)
+            {
+                observer.Update();
+            }
         }
     }
 }

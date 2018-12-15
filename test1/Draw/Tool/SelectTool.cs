@@ -44,13 +44,12 @@ namespace test1.Draw.Tool
         {
             Object.Group group = (Object.Group)activeObjects[0];
             activeObjects.Remove(group);
-            group.Deselect();
             Canvas.RemoveDrawObject(group);
             foreach (Object.ObjectBase obj in group.ObjectList)
             {
                 Canvas.AddDrawObject(obj);
             }
-            Canvas.Update();
+            group.Deselect();
         }
 
         void CreateConvex()
@@ -62,12 +61,12 @@ namespace test1.Draw.Tool
                 Canvas.RemoveDrawObject(obj);
             }
             Object.Convex convex = new Object.Convex(points);
+            convex.Attach(Canvas);
             Canvas.AddDrawObject(convex);
             convex.Deselect();
             convex.Select();
             activeObjects.Clear();
             activeObjects.Add(convex);
-            Canvas.Update();
         }
 
         public void OnButtonMotionEvent(EventMotion eventArgs)
@@ -82,7 +81,6 @@ namespace test1.Draw.Tool
                 {
                     obj.Translate(x, y);
                 }
-                Canvas.Update();
             }
         }
 
@@ -110,7 +108,6 @@ namespace test1.Draw.Tool
                 }
                 activeObjects.Clear();
             }
-            Canvas.Update();
         }
 
 		public void OnButtonReleaseEvent(EventButton eventArgs)
